@@ -1,0 +1,5 @@
+.local/
+bin/
+out/
+*.o
+.env
