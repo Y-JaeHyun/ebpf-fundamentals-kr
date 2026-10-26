@@ -44,7 +44,7 @@ chapters/NN-slug/
 ### 실행
 
     make build                 # root 불필요
-    sudo make run              # 결과: out/run.log
+    make run                   # 내부에서 sudo. 결과: out/run.log
 
 ### 실행 결과 (Linux 6.17 x86_64)
 

@@ -3,7 +3,7 @@
 > **핵심 요약**
 > 1. eBPF 실습에는 **5.8 이상 커널 + BTF(`/sys/kernel/btf/vmlinux`)**, 그리고 clang·bpftool·bpftrace가 있으면 충분하다.
 > 2. BPF 프로그램을 **로드하는 일은 root(또는 CAP_BPF 등)가 필요**하다. 이 저장소는 "빌드는 일반 사용자, 실행만 root"로 나눈다.
-> 3. `make check`(root 불필요)와 `sudo make -C chapters/00-setup/code run`으로 내 환경이 준비됐는지 확인한다.
+> 3. `make check`(root 불필요)와 `make -C chapters/00-setup/code run`(내부에서 sudo)으로 내 환경이 준비됐는지 확인한다.
 
 ## 1. 개념
 
@@ -70,7 +70,7 @@ sudo apt install -y clang llvm make bpftrace linux-tools-common linux-tools-$(un
 ```bash
 make check                                  # = make -C chapters/00-setup/code check
 make vmlinux                                # include/vmlinux.h 생성 (다른 챕터가 사용)
-sudo make -C chapters/00-setup/code run     # root 점검, 결과: code/out/run.log
+make -C chapters/00-setup/code run          # root 점검(내부에서 sudo), 결과: code/out/run.log
 ```
 
 ### 실행 결과 (Linux 6.17 x86_64)
@@ -110,7 +110,7 @@ sudo make -C chapters/00-setup/code run     # root 점검, 결과: code/out/run.
 결과: 필수 항목 통과
 ```
 
-`sudo make -C chapters/00-setup/code run`:
+`make -C chapters/00-setup/code run`:
 
 ```
 == 1) bpftrace로 최소 프로그램 실행
@@ -164,6 +164,7 @@ hello from bpftrace (pid 2500451)
 ## 5. 자주 하는 실수
 
 - **`sudo make build`로 빌드** — 산출물과 Go 캐시가 root 소유가 된다. `make clean`도 실패하면 `sudo chown -R $USER .`로 되돌린다.
+- **`sudo make run`으로 실행** — make 전체가 root로 돌아 로그·산출물이 root 소유가 된다. `make run`만 치면 실행 단계에만 `sudo`가 붙는다. 여러 챕터를 한 번에 돌릴 때는 `sudo ./scripts/run-chapters.sh`를 쓰면 끝난 뒤 소유권을 되돌려 준다.
 - **`! sudo …`(비대화형 셸)에서 비밀번호 입력 불가** — sudo는 비밀번호를 터미널에서만 읽는다. 별도 터미널에서 실행하자.
 - **`/sys/kernel/btf/vmlinux` 없음** — `CONFIG_DEBUG_INFO_BTF=y`가 아닌 커널이다. 배포판 커널을 최신으로 올리거나 VM을 쓰자. (BTFHub처럼 외부 BTF를 쓰는 방법도 있지만 이 저장소 범위 밖이다.)
 - **bpftrace "ERROR: bpftrace currently only supports running as the root user"** — 정상이다. `sudo`로 실행한다.
@@ -176,5 +177,5 @@ hello from bpftrace (pid 2500451)
 | [bpftool 소스·문서](https://github.com/libbpf/bpftool) | GPL-2.0 OR BSD-2-Clause | 명령 사용법 참고 |
 | [커널 문서: BPF](https://docs.kernel.org/bpf/) | GPL-2.0 | 개념 참고(재서술) |
 | [ebpf.io: What is eBPF?](https://ebpf.io/what-is-ebpf/) | CC BY 4.0 | 개념 참고(재서술) |
-| [bpftrace INSTALL](https://github.com/bpftrace/bpftrace/blob/master/INSTALL.md) | Apache-2.0 | 설치 참고 |
+| [bpftrace README](https://github.com/bpftrace/bpftrace) | Apache-2.0 | 설치 참고 |
 | [`capabilities(7)` CAP_BPF 항목](https://man7.org/linux/man-pages/man7/capabilities.7.html) | man-pages 라이선스 | 권한 설명 참고(재서술) |

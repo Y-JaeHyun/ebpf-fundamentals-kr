@@ -43,8 +43,8 @@ cd ebpf-fundamentals-kr
 make check     # 환경 점검 (root 불필요)
 make build     # vmlinux.h 생성 + 모든 예제 빌드 (root 불필요)
 
-# 실행은 root 필요: 챕터별로
-sudo make -C chapters/01-big-picture/code run
+# 실행은 root 필요: 챕터별로 (실행 단계에만 내부에서 sudo가 붙는다)
+make -C chapters/01-big-picture/code run
 # 또는 여러 챕터를 한 번에 (결과는 chapters/NN-*/code/out/run.log)
 sudo ./scripts/run-chapters.sh 00 01 02 07
 ```
