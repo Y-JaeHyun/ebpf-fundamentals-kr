@@ -3,3 +3,8 @@ bin/
 out/
 *.o
 .env
+# 실행 중인 커널에서 생성하는 파일
+include/vmlinux.h
+# bpf2go 생성물(make build 시 다시 만든다)
+*_bpfel.go
+*_bpfeb.go
