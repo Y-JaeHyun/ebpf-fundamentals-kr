@@ -19,7 +19,7 @@ eBPF와 리눅스 커널 네트워킹을 **한국어로, 실행 가능한 예제
 | 04 | Map과 데이터 전달 | hash/array/per-CPU/LRU/LPM, ring buffer vs perf buffer, 성능 차이 | 🚧 |
 | 05 | Verifier | 동작 원리, 자주 보는 거부 메시지와 해결, 한도(명령어 수·스택·루프) | 🚧 |
 | 06 | libbpf + CO-RE/BTF | vmlinux.h, BPF_CORE_READ, skeleton, 커널 버전 차이 흡수 | 🚧 |
-| 07 | Go: cilium/ebpf | bpf2go, 로드·attach, map 읽기, ring buffer 소비, 로드 전 상수 주입 — **주력 실습** | 🚧 |
+| 07 | [Go: cilium/ebpf](chapters/07-go-cilium-ebpf/) | bpf2go, 로드·attach, map 읽기, ring buffer 소비, 로드 전 상수 주입 — **주력 실습** | ✅ |
 | 08 | Rust: Aya 맛보기 *(선택)* | 같은 예제를 Aya로 작성해 비교 | 🚧 |
 | 09 | 커널 패킷 경로 | NIC → XDP → TC → netfilter → 소켓, 각 지점에서 할 수 있는 것 | 🚧 |
 | 10 | XDP와 AF_XDP | drop/pass/redirect, 간단한 필터, AF_XDP 사용자 공간 처리 | 🚧 |
