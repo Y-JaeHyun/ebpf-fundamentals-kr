@@ -61,6 +61,8 @@
 | vmlinux.h | vmlinux.h | 커널 BTF에서 뽑아 만든, 모든 커널 타입이 들어 있는 헤더 | 00, 01 |
 | 재배치 | relocation | 로더가 오브젝트 안의 map 참조·필드 오프셋 등을 실제 값으로 고쳐 쓰는 과정 | 06 |
 | skeleton | BPF skeleton | `bpftool gen skeleton`이 만드는 C 로더 코드 | 06 |
+| flavor 구조체 | struct flavor | `struct task_struct___pre514`처럼 `___` 뒤에 꼬리를 붙여 옛 커널의 구조체 모양을 따로 선언한 것. libbpf는 꼬리를 떼고 같은 구조체로 재배치한다 | 06 |
+| libbpf | libbpf | 커널 트리에서 함께 관리되는 C용 BPF 로더 라이브러리. CO-RE 재배치·skeleton·ring buffer API 제공 | 06 |
 | bpf2go | bpf2go | cilium/ebpf의 도구. BPF C를 컴파일하고 Go 바인딩(구조체·로더)을 생성 | 07 |
 | 로드 전 상수 | read-only global / `const volatile` | 로드 직전에 사용자 공간이 값을 정하는 전역 상수(.rodata). verifier가 값을 알아 죽은 분기를 제거 | 07 |
 
