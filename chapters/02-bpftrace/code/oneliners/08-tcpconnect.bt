@@ -1,0 +1,2 @@
+// 08. TCP 연결을 시도하는 프로세스 (kprobe: 커널 함수 tcp_connect)
+kprobe:tcp_connect { @connects[comm] = count(); }

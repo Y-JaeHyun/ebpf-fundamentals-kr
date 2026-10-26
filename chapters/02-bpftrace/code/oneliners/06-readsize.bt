@@ -1,0 +1,2 @@
+// 06. read()가 실제로 읽은 바이트 수 분포 (2의 거듭제곱 히스토그램)
+tracepoint:syscalls:sys_exit_read /args.ret > 0/ { @bytes = hist(args.ret); }

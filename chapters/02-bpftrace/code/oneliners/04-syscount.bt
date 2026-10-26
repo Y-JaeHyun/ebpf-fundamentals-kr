@@ -1,0 +1,2 @@
+// 04. 프로세스별 시스템 콜 횟수 (raw tracepoint 계열, map + count)
+tracepoint:raw_syscalls:sys_enter { @syscalls[comm] = count(); }

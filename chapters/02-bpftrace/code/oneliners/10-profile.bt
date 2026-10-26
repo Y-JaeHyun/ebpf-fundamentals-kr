@@ -1,0 +1,2 @@
+// 10. CPU 샘플링: 99Hz로 어떤 프로세스가 CPU를 쓰는지 (profile 프로브)
+profile:hz:99 /pid != 0/ { @samples[comm] = count(); }

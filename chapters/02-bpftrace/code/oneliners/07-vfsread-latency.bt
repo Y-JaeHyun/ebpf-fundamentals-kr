@@ -1,0 +1,8 @@
+// 07. 커널 함수 vfs_read 지연 시간 (kprobe + kretprobe, 스레드별 시작 시각 저장)
+kprobe:vfs_read { @start[tid] = nsecs; }
+kretprobe:vfs_read /@start[tid]/
+{
+	@usecs = hist((nsecs - @start[tid]) / 1000);
+	delete(@start[tid]);
+}
+END { clear(@start); }

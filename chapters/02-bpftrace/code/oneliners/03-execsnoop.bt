@@ -1,0 +1,5 @@
+// 03. 새로 실행되는 프로그램 추적 (tracepoint)
+tracepoint:syscalls:sys_enter_execve
+{
+	printf("%-8d %-16s %s\n", pid, comm, str(args.filename));
+}

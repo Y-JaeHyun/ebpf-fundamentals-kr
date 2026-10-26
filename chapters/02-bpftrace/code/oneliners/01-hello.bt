@@ -1,0 +1,3 @@
+// 01. 최소 프로그램: BEGIN/END 특수 프로브
+BEGIN { printf("hello, eBPF! (bpftrace pid=%d)\n", pid); }
+END   { printf("bye\n"); }

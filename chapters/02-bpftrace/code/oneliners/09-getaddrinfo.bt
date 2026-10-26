@@ -1,0 +1,5 @@
+// 09. 사용자 공간 함수 추적: glibc getaddrinfo()로 조회하는 호스트 이름 (uprobe)
+uprobe:/lib/x86_64-linux-gnu/libc.so.6:getaddrinfo
+{
+	printf("%-16s %s\n", comm, str(arg0));
+}

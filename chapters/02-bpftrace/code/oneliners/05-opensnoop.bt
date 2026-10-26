@@ -1,0 +1,7 @@
+// 05. 어떤 프로세스가 어떤 파일을 여는가 (entry/exit 짝 맞추기)
+tracepoint:syscalls:sys_enter_openat { @fname[tid] = args.filename; }
+tracepoint:syscalls:sys_exit_openat /@fname[tid]/
+{
+	printf("%-16s fd=%-4d %s\n", comm, args.ret, str(@fname[tid]));
+	delete(@fname[tid]);
+}
