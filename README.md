@@ -17,7 +17,7 @@ eBPF와 리눅스 커널 네트워킹을 **한국어로, 실행 가능한 예제
 | 02 | [bpftrace로 맛보기](chapters/02-bpftrace/) | one-liner 10선, 프로브 종류 | ✅ |
 | 03 | [프로그램 타입과 tracing hook](chapters/03-tracing-hooks/) | kprobe/kretprobe, fentry/fexit, tracepoint/raw_tp, uprobe, USDT + 프로그램 타입 전체 지도 | ✅ |
 | 04 | [Map과 데이터 전달](chapters/04-maps/) | hash/array/per-CPU/LRU/LPM, ring buffer vs perf buffer, 성능 차이 | ✅ |
-| 05 | Verifier | 동작 원리, 자주 보는 거부 메시지와 해결, 한도(명령어 수·스택·루프) | 🚧 |
+| 05 | [Verifier](chapters/05-verifier/) | 동작 원리, 자주 보는 거부 메시지와 해결, 한도(명령어 수·스택·루프) | ✅ |
 | 06 | libbpf + CO-RE/BTF | vmlinux.h, BPF_CORE_READ, skeleton, 커널 버전 차이 흡수 | 🚧 |
 | 07 | [Go: cilium/ebpf](chapters/07-go-cilium-ebpf/) | bpf2go, 로드·attach, map 읽기, ring buffer 소비, 로드 전 상수 주입 — **주력 실습** | ✅ |
 | 08 | Rust: Aya 맛보기 *(선택)* | 같은 예제를 Aya로 작성해 비교 | 🚧 |

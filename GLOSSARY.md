@@ -10,6 +10,9 @@
 | eBPF | extended Berkeley Packet Filter | 커널 안에서 검증된 작은 프로그램을 안전하게 실행하는 기술. 지금은 이름보다 기술 자체를 가리킨다 | 01 |
 | BPF 프로그램 | BPF program | 커널 이벤트(hook)에 붙어 실행되는 eBPF 바이트코드 묶음. 보통 C로 쓰고 clang으로 컴파일 | 01 |
 | 바이트코드 | bytecode | eBPF 가상 명령어 집합(64비트 레지스터 11개, 명령어 8바이트). `llvm-objdump -d`로 볼 수 있다 | 01 |
+| 상태 가지치기 | state pruning | verifier가 이미 안전하다고 확인한 상태와 같은 상태를 다시 만나면 그 경로 검사를 건너뛰는 최적화 | 05 |
+| 참조 | reference (acquired pointer) | ring buffer 예약·소켓 조회처럼 얻은 뒤 반드시 돌려줘야 하는 포인터. verifier가 모든 경로에서 반환을 확인 | 05 |
+| `bpf_loop` | bpf_loop | 반복을 helper가 수행해 verifier가 루프를 펼치지 않게 하는 helper(5.17+) | 05 |
 | verifier | verifier | 로드 시점에 프로그램이 안전한지(무한 루프·잘못된 메모리 접근 없음 등) 정적으로 검사하는 커널 구성 요소 | 01, 05 |
 | JIT 컴파일러 | Just-In-Time compiler | 검증된 바이트코드를 CPU 기계어로 번역. `bpf_jit_enable` | 01 |
 | hook | hook | BPF 프로그램을 붙이는 커널(또는 사용자 공간)의 지점. 시스템 콜, 함수 진입, 패킷 수신 등 | 01 |
@@ -33,6 +36,8 @@
 | raw tracepoint | raw tracepoint | 인자 가공 없이 받는 tracepoint. 오버헤드가 더 적다 | 03 |
 | uprobe / uretprobe | user probe | 사용자 공간 프로그램·라이브러리 함수의 진입/반환 hook | 02, 03 |
 | USDT | User Statically-Defined Tracing | 사용자 프로그램에 미리 심어 둔 정적 추적 지점 | 03 |
+| BPF trampoline | BPF trampoline | fentry/fexit가 쓰는, 커널 함수 진입부에서 BPF 프로그램을 직접 부르는 작은 기계어 조각. kprobe보다 가볍다 | 03 |
+| 금지 목록 | kprobe blacklist | kprobe를 붙일 수 없는 커널 함수 목록(`/sys/kernel/debug/kprobes/blacklist`) | 03 |
 | perf 이벤트 | perf event | CPU 샘플링(profile)·하드웨어 카운터 등. bpftrace `profile:` | 02 |
 
 ## 데이터 전달
@@ -42,6 +47,9 @@
 | ring buffer | BPF ring buffer | 모든 CPU가 공유하는 이벤트 전달용 버퍼(5.8+). 순서 보장, 예약(reserve) 후 제출(submit) | 07, 04 |
 | perf buffer | perf event array | CPU별 버퍼로 이벤트를 전달하는 예전 방식 | 04 |
 | per-CPU map | per-CPU map | CPU마다 값을 따로 두는 map. 원자 연산 없이 갱신하고 읽을 때 합산 | 07, 04 |
+| LRU | Least Recently Used | 가득 차면 가장 오래 안 쓴 원소를 축출하는 map. 커널 구현은 근사 LRU | 04 |
+| LPM | Longest Prefix Match | 가장 긴 prefix가 일치하는 항목을 찾는 조회. IP 대역 정책에 사용 | 04 |
+| 깨우기 | wakeup | 버퍼에 데이터가 들어왔을 때 잠든 소비자(epoll)를 깨우는 일. 이벤트 전달 비용의 큰 부분 | 04 |
 | 이벤트 유실 | lost / dropped events | 버퍼가 가득 차 버려진 이벤트. 반드시 세어서 보여 줘야 한다 | 07 |
 
 ## 이식성(portability)
