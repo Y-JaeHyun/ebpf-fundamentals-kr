@@ -13,7 +13,7 @@ eBPF와 리눅스 커널 네트워킹을 **한국어로, 실행 가능한 예제
 | # | 챕터 | 핵심 | 상태 |
 |---|---|---|---|
 | 00 | [실습 환경](chapters/00-setup/) | 커널·BTF·커널 설정 점검, clang/bpftool/bpftrace, 권한, VM 대안 | ✅ |
-| 01 | eBPF 큰 그림 | 프로그램 → verifier → JIT → hook → map → 사용자 공간, 쓰임새 지도 | 🚧 |
+| 01 | [eBPF 큰 그림](chapters/01-big-picture/) | 프로그램 → verifier → JIT → hook → map → 사용자 공간, 쓰임새 지도 | ✅ |
 | 02 | bpftrace로 맛보기 | one-liner 10선, 프로브 종류 | 🚧 |
 | 03 | 프로그램 타입과 tracing hook | kprobe/kretprobe, fentry/fexit, tracepoint/raw_tp, uprobe, USDT + 프로그램 타입 전체 지도 | 🚧 |
 | 04 | Map과 데이터 전달 | hash/array/per-CPU/LRU/LPM, ring buffer vs perf buffer, 성능 차이 | 🚧 |
