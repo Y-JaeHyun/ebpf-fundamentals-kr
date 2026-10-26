@@ -20,7 +20,7 @@ eBPF와 리눅스 커널 네트워킹을 **한국어로, 실행 가능한 예제
 | 05 | [Verifier](chapters/05-verifier/) | 동작 원리, 자주 보는 거부 메시지와 해결, 한도(명령어 수·스택·루프) | ✅ |
 | 06 | [libbpf + CO-RE/BTF](chapters/06-libbpf-core/) | vmlinux.h, BPF_CORE_READ, skeleton, 커널 버전 차이 흡수 | ✅ |
 | 07 | [Go: cilium/ebpf](chapters/07-go-cilium-ebpf/) | bpf2go, 로드·attach, map 읽기, ring buffer 소비, 로드 전 상수 주입 — **주력 실습** | ✅ |
-| 08 | Rust: Aya 맛보기 *(선택)* | 같은 예제를 Aya로 작성해 비교 | 🚧 |
+| 08 | [Rust: Aya 맛보기](chapters/08-rust-aya/) *(선택)* | 같은 예제를 Aya로 작성해 비교 — Docker로 빌드, VM에서 실행 | ✅ |
 | 09 | 커널 패킷 경로 | NIC → XDP → TC → netfilter → 소켓, 각 지점에서 할 수 있는 것 | 🚧 |
 | 10 | XDP와 AF_XDP | drop/pass/redirect, 간단한 필터, AF_XDP 사용자 공간 처리 | 🚧 |
 | 11 | TC와 cgroup 소켓 hook | egress 제어, connect4/sendmsg4로 연결 차단 | 🚧 |
@@ -58,6 +58,8 @@ include/bpf/                 libbpf 헤더 사본 (libbpf-dev 없이 빌드)
 include/vmlinux.h            make vmlinux 로 생성 (커밋 안 함)
 mk/common.mk                 챕터 Makefile 공통 규칙
 scripts/run-chapters.sh      root 실습 일괄 실행
+tools/vm/                    호스트 커널을 KVM VM으로 부팅해 실행 (08·12장, sudo 불필요)
+tools/aya/                   Rust Aya 빌드용 Docker 이미지 (08장)
 tools/bench/                 03·04장 공용 부하 프로그램(read 반복, CPU 고정)
 GLOSSARY.md                  용어집 (한국어 ↔ 영어)
 ```
