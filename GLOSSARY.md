@@ -73,6 +73,8 @@
 | XDP | eXpress Data Path | NIC 드라이버 수준에서 패킷을 가장 먼저 처리하는 hook | 09, 10 |
 | TC | Traffic Control | 커널 트래픽 제어 계층. `clsact`/`tcx`로 ingress·egress에 BPF를 붙인다 | 09, 11 |
 | AF_XDP | AF_XDP socket | XDP에서 바로 사용자 공간 메모리로 패킷을 넘기는 소켓 | 10 |
+| UMEM | user memory | AF_XDP 소켓에 등록한 사용자 공간 패킷 버퍼. 같은 크기의 칸으로 나눠 fill/rx 링으로 주고받는다 | 10 |
+| XSKMAP | XSK map | XDP가 패킷을 보낼 AF_XDP 소켓을 고르는 map. key = 수신 큐 번호 | 10 |
 | sk_buff | socket buffer | 커널 네트워크 스택의 패킷 구조체 | 09 |
 | netns | network namespace | 독립된 네트워크 스택. 실습 샌드박스로 사용 | 09 |
 | GRO | Generic Receive Offload | 같은 흐름의 수신 패킷을 묶어 위 계층에 한 번에 올리는 최적화 | 09 |
