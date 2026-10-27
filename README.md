@@ -28,7 +28,7 @@ eBPF와 리눅스 커널 네트워킹을 **한국어로, 실행 가능한 예제
 | 13 | [관측 실전 패턴](chapters/13-observability/) | 프로세스 트리 추적, TCP RTT/재전송, uprobe로 TLS 평문 보기 | ✅ |
 | 14 | [디버깅과 성능](chapters/14-debug-perf/) | bpftool prog/map 심화, bpf_printk, 오버헤드 측정, 운영 배포 주의점 | ✅ |
 | 15 | [다음 단계](chapters/15-next-steps/) | 오픈소스 기여 지도(Cilium, Tetragon, Falco, libbpf 등), 블로그·발표 가이드 | ✅ |
-| A | 부록: 커널 버전별 기능 표 | ring buffer(5.8), fentry(5.5), BPF 링크 등 "몇 버전부터 되나" | 🚧 |
+| A | [부록: 커널 버전별 기능 표](chapters/A-kernel-versions/) | ring buffer(5.8), fentry(5.5), BPF 링크 등 "몇 버전부터 되나" | ✅ |
 
 **추천 경로**: 00 → 01 → 02 → 07(Go로 직접 만들어 보기) → 03~06(원리 보강) → 09~12(네트워크·보안) → 13~15.
 07장은 06장(CO-RE)보다 먼저 읽어도 되도록 필요한 최소 개념을 본문에 담았습니다.
