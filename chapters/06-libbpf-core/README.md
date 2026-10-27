@@ -131,7 +131,7 @@ make run       # 내부에서 sudo. 결과: out/run.log
 
 배포판의 `libbpf-dev` 패키지를 쓰지 않고 소스에서 빌드하는 이유는 **버전을 고정하기** 위해서다. skeleton을 만드는 bpftool과 로더가 링크하는 libbpf의 버전이 크게 어긋나면 skeleton 헤더가 컴파일되지 않거나 기능이 빠질 수 있다.
 
-> 이 저장소에서 검증한 환경에서는 libelf-dev 대신 같은 버전의 헤더를 따로 받아 `make build LIBELF_CFLAGS=-I<헤더 경로> LIBELF_LIBS=/usr/lib/x86_64-linux-gnu/libelf.so.1`로 빌드했다. 헤더 위치가 표준과 다를 때 쓰는 변수다. 보통은 위의 apt 설치만 하면 된다.
+> 위 apt 설치 경로는 깨끗한 `ubuntu:24.04` 컨테이너에서 확인했다(libelf-dev 0.190, clang 18). 저장소 소스 그대로 `make build`가 되고, 결과 바이너리는 `libelf.so.1`·`libz.so.1`에 링크된다. 이 장의 실행 결과를 만든 호스트에는 libelf-dev가 없어서, 같은 버전의 헤더를 따로 받아 `make build LIBELF_CFLAGS=-I<헤더 경로> LIBELF_LIBS=/usr/lib/x86_64-linux-gnu/libelf.so.1`로 빌드했다. 헤더 위치가 표준과 다를 때 쓰는 변수다.
 
 ### 실행 결과 (Linux 6.17 x86_64)
 
