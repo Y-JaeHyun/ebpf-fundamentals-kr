@@ -21,7 +21,7 @@ eBPF와 리눅스 커널 네트워킹을 **한국어로, 실행 가능한 예제
 | 06 | [libbpf + CO-RE/BTF](chapters/06-libbpf-core/) | vmlinux.h, BPF_CORE_READ, skeleton, 커널 버전 차이 흡수 | ✅ |
 | 07 | [Go: cilium/ebpf](chapters/07-go-cilium-ebpf/) | bpf2go, 로드·attach, map 읽기, ring buffer 소비, 로드 전 상수 주입 — **주력 실습** | ✅ |
 | 08 | [Rust: Aya 맛보기](chapters/08-rust-aya/) *(선택)* | 같은 예제를 Aya로 작성해 비교 — Docker로 빌드, VM에서 실행 | ✅ |
-| 09 | 커널 패킷 경로 | NIC → XDP → TC → netfilter → 소켓, 각 지점에서 할 수 있는 것 | 🚧 |
+| 09 | [커널 패킷 경로](chapters/09-packet-path/) | NIC → XDP → TC → netfilter → 소켓, 각 지점에서 할 수 있는 것 | ✅ |
 | 10 | XDP와 AF_XDP | drop/pass/redirect, 간단한 필터, AF_XDP 사용자 공간 처리 | 🚧 |
 | 11 | TC와 cgroup 소켓 hook | egress 제어, connect4/sendmsg4로 연결 차단 | 🚧 |
 | 12 | LSM-BPF | 활성화(`lsm=...,bpf`), file_open/bprm_check 예제, 차단 정책 | 🚧 |

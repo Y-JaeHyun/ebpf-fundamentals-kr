@@ -75,6 +75,9 @@
 | AF_XDP | AF_XDP socket | XDP에서 바로 사용자 공간 메모리로 패킷을 넘기는 소켓 | 10 |
 | sk_buff | socket buffer | 커널 네트워크 스택의 패킷 구조체 | 09 |
 | netns | network namespace | 독립된 네트워크 스택. 실습 샌드박스로 사용 | 09 |
+| GRO | Generic Receive Offload | 같은 흐름의 수신 패킷을 묶어 위 계층에 한 번에 올리는 최적화 | 09 |
+| NAPI | New API | 인터럽트 대신 폴링으로 수신 패킷을 묶어 처리하는 드라이버 방식. native XDP는 여기서 실행된다 | 09 |
+| tcx | TC express | link 기반 TC attach(6.6+). qdisc 없이 붙고 프로세스가 끝나면 함께 떨어진다 | 09 |
 
 ## 보안
 
