@@ -23,7 +23,7 @@ eBPF와 리눅스 커널 네트워킹을 **한국어로, 실행 가능한 예제
 | 08 | [Rust: Aya 맛보기](chapters/08-rust-aya/) *(선택)* | 같은 예제를 Aya로 작성해 비교 — Docker로 빌드, VM에서 실행 | ✅ |
 | 09 | [커널 패킷 경로](chapters/09-packet-path/) | NIC → XDP → TC → netfilter → 소켓, 각 지점에서 할 수 있는 것 | ✅ |
 | 10 | [XDP와 AF_XDP](chapters/10-xdp-afxdp/) | drop/pass/redirect, 간단한 필터, AF_XDP 사용자 공간 처리 | ✅ |
-| 11 | TC와 cgroup 소켓 hook | egress 제어, connect4/sendmsg4로 연결 차단 | 🚧 |
+| 11 | [TC와 cgroup 소켓 hook](chapters/11-tc-cgroup/) | egress 제어, connect4/sendmsg4로 연결 차단 | ✅ |
 | 12 | [LSM-BPF](chapters/12-lsm-bpf/) | 활성화(`lsm=...,bpf`), file_open/bprm_check 예제, 차단 정책 — VM에서 실습 | ✅ |
 | 13 | 관측 실전 패턴 | 프로세스 트리 추적, TCP RTT/재전송, uprobe로 TLS 평문 보기 | 🚧 |
 | 14 | 디버깅과 성능 | bpftool prog/map 심화, bpf_printk, 오버헤드 측정, 운영 배포 주의점 | 🚧 |
