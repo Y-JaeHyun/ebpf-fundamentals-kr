@@ -18,15 +18,17 @@ for ns in "$NS_A" "$NS_B"; do
 	fi
 done
 created=() pid="" out=""
-cleanup() { # 이번 실행에서 만든 것만 정리한다
-	[ -n "$pid" ] && kill "$pid" 2>/dev/null && wait "$pid" 2>/dev/null
+cleanup() { # 이번 실행에서 만든 것만 정리한다. 한 단계가 실패해도 나머지는 계속한다
+	set +e
+	[ -n "$pid" ] && { kill "$pid" 2>/dev/null; wait "$pid" 2>/dev/null; }
 	[ -n "$out" ] && rm -f "$out"
-	for ns in "${created[@]}"; do ip netns del "$ns" 2>/dev/null || true; done # veth 쌍도 함께 사라진다
+	for ns in "${created[@]}"; do ip netns del "$ns" 2>/dev/null; done # veth 쌍도 함께 사라진다
+	return 0
 }
 trap cleanup EXIT
 
-ip netns add "$NS_A" && created+=("$NS_A")
-ip netns add "$NS_B" && created+=("$NS_B")
+ip netns add "$NS_A"; created+=("$NS_A")
+ip netns add "$NS_B"; created+=("$NS_B")
 ip link add veth09a netns "$NS_A" type veth peer name veth09b netns "$NS_B"
 ip -n "$NS_A" addr add 192.0.2.1/24 dev veth09a
 ip -n "$NS_B" addr add 192.0.2.2/24 dev veth09b
