@@ -99,3 +99,13 @@
 | RTO | retransmission timeout | ACK가 오지 않을 때 재전송하기까지 기다리는 시간(RFC 6298) | 13 |
 | netem | network emulator | 지연·손실·중복·재정렬을 넣는 qdisc. `tc qdisc ... netem delay 20ms loss 2%` | 13 |
 | 시작 게이트 | start gate | 추적 대상을 멈춘 채 띄워 등록한 뒤 출발시키는 기법. 등록 전 이벤트 누락을 막는다 | 13 |
+
+## 디버깅과 성능
+
+| 용어 | 영어 | 뜻 | 처음 나오는 곳 |
+|---|---|---|---|
+| xlated | translated instructions | verifier가 고친 뒤의 BPF 명령어. `bpftool prog dump xlated` | 14 |
+| jited | JIT-compiled code | JIT가 만든 기계어. JIT가 켜져 있으면 CPU가 실제로 실행하는 것 | 01, 14 |
+| tag | program tag | 프로그램 명령어의 해시. 같은 코드면 같은 값 | 14 |
+| BPF 실행 통계 | BPF stats (`run_cnt`, `run_time_ns`) | 프로그램별 실행 횟수·누적 시간. `kernel.bpf_stats_enabled`나 `BPF_ENABLE_STATS`로 켤 때만, 시스템 전체에서 쌓인다 | 14 |
+| trace 버퍼 | ftrace ring buffer | `bpf_printk` 출력이 가는 커널 전역 버퍼. `trace`는 읽어도 남고 `trace_pipe`는 읽으면 사라진다 | 14 |
