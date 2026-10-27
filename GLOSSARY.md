@@ -89,3 +89,13 @@
 | LSM-BPF | BPF LSM | LSM hook에 BPF 프로그램을 붙여 정책을 구현(5.7+, 부팅 인자 `lsm=` 에 `bpf` 필요) | 00, 12 |
 | CAP_BPF | CAP_BPF | BPF 사용 권한을 root 전체(CAP_SYS_ADMIN)와 분리한 capability(5.8+) | 00 |
 | lockdown | kernel lockdown | 커널 메모리 접근을 제한하는 LSM. `confidentiality` 모드면 추적 기능 대부분이 막힌다 | 00 |
+
+## 관측 실전
+
+| 용어 | 영어 | 뜻 | 처음 나오는 곳 |
+|---|---|---|---|
+| tp_btf | BTF-enabled tracepoint | 인자를 커널 타입(`task_struct *`, `sock *` 등) 그대로 받는 tracepoint 프로그램 | 03, 13 |
+| SRTT | smoothed round-trip time | TCP가 RTO 계산을 위해 추적하는 평활 RTT. 리눅스는 `tcp_sock.srtt_us`에 8배 값으로 저장 | 13 |
+| RTO | retransmission timeout | ACK가 오지 않을 때 재전송하기까지 기다리는 시간(RFC 6298) | 13 |
+| netem | network emulator | 지연·손실·중복·재정렬을 넣는 qdisc. `tc qdisc ... netem delay 20ms loss 2%` | 13 |
+| 시작 게이트 | start gate | 추적 대상을 멈춘 채 띄워 등록한 뒤 출발시키는 기법. 등록 전 이벤트 누락을 막는다 | 13 |
